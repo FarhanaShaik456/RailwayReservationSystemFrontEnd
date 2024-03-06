@@ -1,0 +1,26 @@
+<div class="verify">
+    <h2>Email Verification</h2>
+    <p>An OTP has been sent to your email address. Please enter the OTP below:</p>
+    <form (ngSubmit)="verifyOTP()">
+        <div class="mb-3">
+            <label for="otp" class="form-label"></label>
+            <input type="text" [formControl]="otp" id="otp" class="form-control" placeholder="Enter OTP">
+            <div *ngIf="otp.invalid && (otp.dirty || otp.touched)" class="error-message">
+                <div *ngIf="otp.hasError('required')">OTP is required.</div>
+                <div *ngIf="otp.hasError('minlength')">OTP must be at least 6 characters long.</div>
+                <div *ngIf="otp.hasError('maxlength')">OTP cannot be more than 6 characters long.</div>
+                <div *ngIf="otp.hasError('pattern')">Invalid OTP format.</div>
+            </div>
+        </div>
+        <br>
+        <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha">
+        </ngx-recaptcha2>
+        <br>
+        <div>
+            <button type="submit" class="btn btn-success">Verify</button>
+        </div>
+        <br>
+        <br>
+    </form>
+    <p>Didn't receive the OTP? <span style="color: blue; text-decoration: underline; cursor: pointer;" (click)="resendOTP()">Resend OTP</span></p>
+</div>

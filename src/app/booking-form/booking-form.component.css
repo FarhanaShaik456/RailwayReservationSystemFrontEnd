@@ -1,0 +1,15 @@
+.error-message {
+  color: red;
+  font-style: italic;
+}
+.h1{
+    float: left;
+}
+.bookingForm{
+    width:40%;
+    margin-left: 55%;
+}
+.bg{
+  background-image: url('/assets/ticket.png');
+  background-repeat: no-repeat;
+}

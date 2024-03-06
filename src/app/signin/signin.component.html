@@ -1,0 +1,61 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="bg" [class.blur-background]="registrationSuccess">
+  <br>
+  <marquee behavior="scroll" direction="left" style="font-weight: bold;">Did you Know that Indian Railways (IR) carries
+    over 25 million passengers daily which is perhaps more than the entire population of Australia, New Zealand and
+    Tasmania put together. Happy journey.</marquee>
+  <br>
+  <br>
+  <h1 class="heading">Welcome to Rail Reservation</h1>
+  <div class="bg1">
+
+    <div class="Login">
+      <!-- <h1>Signin User</h1> -->
+      <form [formGroup]="signinUser" (ngSubmit)="submitForm()">
+        <div class="mb-3">
+          <label for="username" class="form-label"><b>Username</b></label>
+          <input type="text" formControlName="username" id="username" class="form-control"
+            placeholder="Enter username" />
+          <div *ngIf="signinUser.controls['username'].invalid && signinUser.controls['username'].touched"
+            class="error-message">Please Enter a valid username</div>
+        </div>
+
+        <div class="mb-3" style="position: relative;">
+          <label for="password" class="form-label title"><b>Password</b>
+            <mat-icon class="eye-icon icon" (click)="togglePasswordVisibility()" style="cursor: pointer;">
+              {{ showPassword ? 'visibility' : 'visibility_off' }}
+            </mat-icon></label>
+          <input type="{{ showPassword ? 'text' : 'password' }}" formControlName="password" class="form-control"
+            id="password" placeholder="Enter Password" />
+          <div *ngIf="signinUser.get('password')?.invalid && signinUser.get('password')?.touched" class="error-message">
+            Password is required
+          </div>
+
+          <!-- <ngx-recaptcha2 [siteKey]="'YOUR_RECAPTCHA_SITE_KEY'" (onCaptchaSuccess)="handleCaptchaSuccess($event)"></ngx-recaptcha2> -->
+
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-success">Login</button>&nbsp;&nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-danger cancel" (click)="goBack()">Cancel</button>
+        </div>
+      </form>
+      
+      
+      <!-- <p class="fs-4" class="re">
+        New User? <a routerLink="/register">Click here</a> to sign up.
+      </p>
+      <p>forgot password</p> -->
+
+      <div class="container">
+        <p class="fs-6" class="regis" routerLink="/register">
+          New User? <span class="hover-effect">Click here</span> to sign up.
+        </p>
+        <p class="forgot-password" routerLink="/forgotpassword">Forgot password</p>
+    </div>
+    
+
+    </div>
+     
+  </div>
+</div>

@@ -1,0 +1,78 @@
+.Login{
+    /* background: url('/assets/20334Train.webp'); */
+    margin-left: 55%;   
+    margin-right: 5%;  
+    color: black;
+    width: 40%;
+    height: 99%;
+    border: 1px solid lightgray;
+    padding: 5%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.error-message {
+    color: red;
+    font-style: italic;
+  }
+h1{
+    text-align: center;
+    color: midnightblue;
+    font-weight: 500;
+}
+.bg{  
+    background-image: url('/assets/i1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 88vh;
+}  
+.bg1{
+    background-image: url('/assets/booking.jpg');
+    height: 78%;
+    background-repeat: no-repeat;
+}
+
+p{
+    color: #68bb59
+    /* color:gainsboro */
+}  
+.heading{
+    font-style: italic;
+    font-weight: 600;
+    font-size: 200%;
+    color: green;
+    text-align: center;
+
+}
+
+.icon{
+    float: right;
+    margin-left: 10px; 
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .forgot-password {
+     /* color:gainsboro */
+     color: #68bb59;
+    font-weight: 250%;
+    font-style: italic;
+    margin-top: 14%;    
+  }
+  .forgot-password:hover {
+    text-decoration: underline; /* Underline text on hover */
+    cursor: pointer; /* Change cursor on hover */
+    color: #355e3b;
+}
+  .hover-effect:hover {
+    color: #355e3b; /* Change color on hover */
+    cursor: pointer; /* Change cursor on hover */
+}
+.regis{
+    margin-top: 14%;
+}

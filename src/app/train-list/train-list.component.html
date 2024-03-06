@@ -1,0 +1,188 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Trains</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <!-- Train Number Field -->
+          <div class="mb-3">
+            <label for="trainNo" class="form-label"><b>Train Number</b></label>
+            <input type="text" formControlName="trainNo" id="trainNo" class="form-control"
+              placeholder="Enter Train Number" />
+            <div *ngIf="formValue.get('trainNo')?.invalid && formValue.get('trainNo')?.touched" class="error-message">
+              <span *ngIf="formValue.get('trainNo')?.hasError('required')">Train Number is required</span>
+              <span *ngIf="formValue.get('trainNo')?.hasError('pattern')">Train Number should contain exactly 5
+                digits</span>
+            </div>
+          </div>
+
+          <!-- Train Name Field -->
+          <div class="mb-3">
+            <label for="trainName" class="form-label"><b>Train Name</b></label>
+            <input type="text" formControlName="trainName" id="trainName" class="form-control"
+              placeholder="Enter Train Name" />
+            <div *ngIf="formValue.get('trainName')?.invalid && formValue.get('trainName')?.touched"
+              class="error-message">
+              <span *ngIf="formValue.get('trainName')?.hasError('required')">Train Name is required</span>
+              <span *ngIf="formValue.get('trainName')?.hasError('minlength')">Train Name should be at least 3
+                characters</span>
+              <span *ngIf="formValue.get('trainName')?.hasError('maxlength')">Train Name should not exceed 50
+                characters</span>
+            </div>
+          </div>
+
+          <!-- Train From Field -->
+          <div class="mb-3">
+            <label for="trainFrom" class="form-label"><b>Train From</b></label>
+            <input type="text" formControlName="trainFrom" id="trainFrom" class="form-control"
+              placeholder="Enter Train From" />
+            <div *ngIf="formValue.get('trainFrom')?.invalid && formValue.get('trainFrom')?.touched"
+              class="error-message">
+              <span *ngIf="formValue.get('trainFrom')?.hasError('required')">Train From is required</span>
+              <span *ngIf="formValue.get('trainFrom')?.hasError('minlength')">Train From should be at least 3
+                characters</span>
+              <span *ngIf="formValue.get('trainFrom')?.hasError('maxlength')">Train From should not exceed 30
+                characters</span>
+            </div>
+          </div>
+
+          <!-- Train To Field -->
+          <div class="mb-3">
+            <label for="trainTo" class="form-label"><b>Train To</b></label>
+            <input type="text" formControlName="trainTo" id="trainTo" class="form-control"
+              placeholder="Enter Train To" />
+            <div *ngIf="formValue.get('trainTo')?.invalid && formValue.get('trainTo')?.touched" class="error-message">
+              <span *ngIf="formValue.get('trainTo')?.hasError('required')">Train To is required</span>
+              <span *ngIf="formValue.get('trainTo')?.hasError('minlength')">Train To should be at least 3
+                characters</span>
+              <span *ngIf="formValue.get('trainTo')?.hasError('maxlength')">Train To should not exceed 30
+                characters</span>
+            </div>
+          </div>
+
+          <!-- Fare Field -->
+          <div class="mb-3">
+            <label for="fare" class="form-label"><b>Fare</b></label>
+            <input type="number" formControlName="fare" id="fare" class="form-control" placeholder="Enter Fare" />
+            <div *ngIf="formValue.get('fare')?.invalid && formValue.get('fare')?.touched" class="error-message">
+              <span *ngIf="formValue.get('fare')?.hasError('required')">Fare is required</span>
+              <span *ngIf="formValue.get('fare')?.hasError('min')">Fare should be a positive number</span>
+              <span *ngIf="formValue.get('fare')?.hasError('max')">Fare should not exceed 1000</span>
+            </div>
+          </div>
+
+          <!-- Seats Field -->
+          <div class="mb-3">
+            <label for="seats" class="form-label"><b>Seats</b></label>
+            <input type="number" formControlName="seats" id="seats" class="form-control" placeholder="Enter Seats" />
+            <div *ngIf="formValue.get('seats')?.invalid && formValue.get('seats')?.touched" class="error-message">
+              <span *ngIf="formValue.get('seats')?.hasError('required')">Seats are required</span>
+              <span *ngIf="formValue.get('seats')?.hasError('min')">Seats should be a positive number</span>
+              <span *ngIf="formValue.get('seats')?.hasError('max')">Seats should not exceed 50</span>
+            </div>
+          </div>
+
+          <!-- Time (HH:mm) Field -->
+          <div class="mb-3">
+            <label for="time" class="form-label"><b>Time (HH:mm)</b></label>
+            <input type="text" formControlName="time" id="time" class="form-control" placeholder="Enter Time (HH:mm)" />
+            <div *ngIf="formValue.get('time')?.invalid && formValue.get('time')?.touched" class="error-message">
+              <span *ngIf="formValue.get('time')?.hasError('required')">Time is required</span>
+              <span *ngIf="formValue.get('time')?.hasError('invalidTimeFormat')">Invalid time format (HH:mm)</span>
+            </div>
+          </div>
+
+
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+
+        <button type="button" (click)="updateTrain()" routerLink="/trainList" class="btn btn-primary">Save
+          changes</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------->
+<app-navbar-admin></app-navbar-admin>
+<div class="bg">
+  <div class="button">
+    <button mat-raised-button color="primary" *ngIf="isRole === 'Admin'" routerLink="/adminLogin">
+      <mat-icon>keyboard_return</mat-icon> GoBack
+    </button>
+    <button mat-raised-button color="primary" *ngIf="isRole === 'User'" routerLink="/userLogin">
+      <mat-icon>keyboard_return</mat-icon> GoBack
+    </button>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="filter">Search</label>
+          <input type="text" class="form-control" (keyup)="applyFilter($event)" id="filter" placeholder="Bangalore">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container1">
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th>Train No</th>
+          <th>Train Name</th>
+          <th>Train From</th>
+          <th>Train To</th>
+          <th>Fare</th>
+          <th>Seats</th>
+          <th>Time</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of dataSource">
+          <td>{{ row.trainNo }}</td>
+          <td>{{ row.trainName }}</td>
+          <td>{{ row.trainFrom }}</td>
+          <td>{{ row.trainTo }}</td>
+          <td>{{ row.fare }}</td>
+          <td>{{ row.seats }}</td>
+          <td>{{ row.time }}</td>
+          <td>
+            <button *ngIf="isRole === 'Admin'" mat-icon-button (click)="EditForm(row)" type="button"
+              class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><mat-icon
+                class="custom-icon primary-icon">edit</mat-icon></button>
+            <button *ngIf="isRole === 'Admin'" mat-icon-button class="btn btn-danger"
+              (click)="deleteTrain(row.trainNo)"><mat-icon class="custom-icon warn-icon">delete</mat-icon></button>
+            <button *ngIf="isRole !== 'Admin'" class="btn btn-success"
+              (click)="redirectToBookingOrLogin(row)">Book Now</button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot *ngIf="dataSource.length === 0">
+        <tr>
+          <td class="text-center" colspan="9">No data matching the filter</td>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="col">
+      <button *ngIf="isRole === 'Admin'" class="btn btn-primary" routerLink="/addtrain">ADD Train</button>
+    </div>
+  </div>
+</div>

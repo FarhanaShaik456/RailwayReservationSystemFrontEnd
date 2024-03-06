@@ -1,0 +1,29 @@
+
+.container1 {
+  height: 100vh; 
+  width: 90%;
+  margin-left: 5%;
+}
+.container{
+  margin-top: 3%;
+  width: 35%;
+  float: right;
+}
+
+.modal{
+  backdrop-filter: blur(1.5px);
+}
+.primary-icon {
+  color: #007bff; /* Change this to your desired primary color */
+}
+
+.warn-icon {
+  color: #ff5722; /* Change this to your desired warn color */
+}
+
+.error-message {
+  color: red;
+  font-style: italic;
+  }
+ 
+

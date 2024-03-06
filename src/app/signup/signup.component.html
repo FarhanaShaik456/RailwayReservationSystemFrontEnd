@@ -1,0 +1,113 @@
+<div class="bg">
+  <div>
+    <h1>SignUp Page</h1>
+  </div>
+
+  <div class="register">
+      <form [formGroup]="signupForm" (ngSubmit)="submitForm()">
+        <p class="error-message" *ngIf="addUserErrorMessage">{{addUserErrorMessage?.error?.message}}</p>
+        <!-- Username Field -->
+        <div class="mb-3">
+          <label for="username" class="form-label"><b>Username</b></label>
+          <input type="text" formControlName="username" id="username" class="form-control"
+            placeholder="Enter Username" />
+          <div *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched" class="error-message">
+            <div *ngIf="signupForm.get('username')?.hasError('required')">Username is required</div>
+            <div *ngIf="signupForm.get('username')?.hasError('minlength')">Username should be at least 3 characters
+            </div>
+            <div *ngIf="signupForm.get('username')?.hasError('maxlength')">Username should not exceed 20 characters
+            </div>
+          </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="mb-3">
+          <label for="password" class="form-label"><b>Password</b>
+            <i class="bi bi-heart text-info" data-bs-toggle="tooltip" data-bs-placement="top" title="At least 8 characters — the more characters, 
+            the better. A mixture of both uppercase and 
+            lowercase letters. A mixture of letters and numbers. 
+            Inclusion of at least one special character, e.g., ! @ # ? ]">
+              info
+            </i>
+          </label>
+          <input type="password" formControlName="password" id="password" class="form-control"
+            placeholder="Enter Password" />
+          <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="error-message">
+            <div *ngIf="signupForm.get('password')?.hasError('required')">Password is required</div>
+            <div *ngIf="signupForm.get('password')?.hasError('minlength')">Password should be at least 8 characters long
+            </div>
+            <div *ngIf="signupForm.get('password')?.hasError('pattern')">Password should include at least one uppercase
+              letter, one lowercase letter, one digit, and one special character</div>
+          </div>
+        </div>
+
+        <!-- Role Field
+        <div class="mb-3">
+          <label for="role" class="form-label"><b>Role</b></label>
+          <select formControlName="role" id="role" class="form-control">
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div> -->
+        
+        <!-- Email Field -->
+        <div class="mb-3">
+          <label for="email" class="form-label"><b>Email</b></label>
+          <input type="email" formControlName="email" id="email" class="form-control" placeholder="Enter Email" />
+          <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="error-message">
+            <div *ngIf="signupForm.get('email')?.hasError('required')">Email is required</div>
+            <div *ngIf="signupForm.get('email')?.hasError('email')">Enter a valid email address</div>
+          </div>
+        </div>
+
+
+        <!-- Gender Field -->
+        <div class="mb-3">
+          <label for="gender" class="form-label"><b>Gender</b></label>
+          <select formControlName="gender" id="gender" class="form-select">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          <div *ngIf="signupForm.get('gender')?.invalid && signupForm.get('gender')?.touched" class="error-message">
+            <div *ngIf="signupForm.get('gender')?.hasError('required')">Gender is required</div>
+          </div>
+        </div>
+
+
+        <!-- Age Field -->
+        <div class="mb-3">
+          <label for="age" class="form-label"><b>Age</b></label>
+          <input type="number" formControlName="age" id="age" class="form-control" placeholder="Enter Age" />
+          <div *ngIf="signupForm.get('age')?.invalid && signupForm.get('age')?.touched" class="error-message">
+            <div *ngIf="signupForm.get('age')?.hasError('required')">Age is required</div>
+            <div *ngIf="signupForm.get('age')?.hasError('min')">Age cannot be negative</div>
+            <div *ngIf="signupForm.get('age')?.hasError('max')">Age cannot exceed 100</div>
+          </div>
+        </div>
+
+        <!-- Country Field -->
+        <div class="mb-3">
+          <label for="country" class="form-label"><b>Country</b></label>
+          <input type="text" formControlName="country" id="country" class="form-control" placeholder="Enter Country" />
+          <div *ngIf="signupForm.get('country')?.invalid && signupForm.get('country')?.touched" class="error-message">
+            <div *ngIf="signupForm.get('country')?.hasError('required')">Country is required</div>
+          </div>
+        </div>
+
+        <!-- <form [formGroup]="aFormGroup">
+          <ngx-recaptcha2 #captchaElem
+            [siteKey]="siteKey"
+            formControlName="recaptcha">
+          </ngx-recaptcha2>
+        </form> -->
+
+        <div>
+          <button type="submit" class="btn btn-success">Register</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-danger cancel" (click)="goBack()">Cancel</button>
+        </div>
+      </form>
+
+      <p>
+        If you are already User? <a routerLink="/login">Click here</a> to sign in.
+      </p>
+  </div>

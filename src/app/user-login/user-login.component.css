@@ -1,0 +1,54 @@
+.userlog {
+    /* background: url("../../public/images/farmer/FB25.png"); */
+    height: 90vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 3%;
+  }
+  
+  .usermenucard {
+    display: flex;
+    gap: 20px;
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 5%;
+  }
+  
+  .card {
+    width: 300px; 
+    height: 400px; 
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+  }
+  
+  .card img {
+    width: 100%; 
+    height: 60%; 
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .card-body {
+    flex-grow: 1;
+    padding: 1rem; 
+  }
+  
+  .card-title {
+    font-size: 20px; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+    color: #333; 
+  }
+  
+  .card-description {
+    font-size: 14px; 
+    color: #777; 
+  }
+  h1{
+    color: darkblue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }

@@ -1,0 +1,87 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="train">
+  <h1>Train Information Form</h1>
+  <div class="addtrain">
+    <form [formGroup]="trainForm" (ngSubmit)="submitForm()">
+      <!-- Train Number Field -->
+      <div class="mb-3">
+        <label for="trainNo" class="form-label"><b>Train Number</b></label>
+        <input type="text" formControlName="trainNo" id="trainNo" class="form-control" placeholder="Enter Train Number" />
+        <div *ngIf="trainForm.get('trainNo')?.invalid && trainForm.get('trainNo')?.touched" class="error-message">
+          <span *ngIf="trainForm.get('trainNo')?.hasError('required')">Train Number is required</span>
+          <span *ngIf="trainForm.get('trainNo')?.hasError('pattern')">Train Number should contain exactly 5 digits</span>
+        </div>
+      </div>
+
+      <!-- Train Name Field -->
+      <div class="mb-3">
+        <label for="trainName" class="form-label"><b>Train Name</b></label>
+        <input type="text" formControlName="trainName" id="trainName" class="form-control" placeholder="Enter Train Name" />
+        <div *ngIf="trainForm.get('trainName')?.invalid && trainForm.get('trainName')?.touched" class="error-message">
+          <span *ngIf="trainForm.get('trainName')?.hasError('required')">Train Name is required</span>
+          <span *ngIf="trainForm.get('trainName')?.hasError('minlength')">Train Name should be at least 3 characters</span>
+          <span *ngIf="trainForm.get('trainName')?.hasError('maxlength')">Train Name should not exceed 50 characters</span>
+        </div>
+      </div>
+
+      <!-- Train From Field -->
+      <div class="mb-3">
+        <label for="trainFrom" class="form-label"><b>Train From</b></label>
+        <input type="text" formControlName="trainFrom" id="trainFrom" class="form-control" placeholder="Enter Train From" />
+        <div *ngIf="trainForm.get('trainFrom')?.invalid && trainForm.get('trainFrom')?.touched" class="error-message">
+          <span *ngIf="trainForm.get('trainFrom')?.hasError('required')">Train From is required</span>
+          <span *ngIf="trainForm.get('trainFrom')?.hasError('minlength')">Train From should be at least 3 characters</span>
+          <span *ngIf="trainForm.get('trainFrom')?.hasError('maxlength')">Train From should not exceed 30 characters</span>
+        </div>
+      </div>
+
+      <!-- Train To Field -->
+      <div class="mb-3">
+        <label for="trainTo" class="form-label"><b>Train To</b></label>
+        <input type="text" formControlName="trainTo" id="trainTo" class="form-control" placeholder="Enter Train To" />
+        <div *ngIf="trainForm.get('trainTo')?.invalid && trainForm.get('trainTo')?.touched" class="error-message">
+          <span *ngIf="trainForm.get('trainTo')?.hasError('required')">Train To is required</span>
+          <span *ngIf="trainForm.get('trainTo')?.hasError('minlength')">Train To should be at least 3 characters</span>
+          <span *ngIf="trainForm.get('trainTo')?.hasError('maxlength')">Train To should not exceed 30 characters</span>
+        </div>
+      </div>
+
+      <!-- Fare Field -->
+      <div class="mb-3">
+        <label for="fare" class="form-label"><b>Fare</b></label>
+        <input type="number" formControlName="fare" id="fare" class="form-control" placeholder="Enter Fare" />
+        <div *ngIf="trainForm.get('fare')?.invalid && trainForm.get('fare')?.touched" class="error-message">
+          <span *ngIf="trainForm.get('fare')?.hasError('required')">Fare is required</span>
+          <span *ngIf="trainForm.get('fare')?.hasError('min')">Fare should be a positive number</span>
+          <span *ngIf="trainForm.get('fare')?.hasError('max')">Fare should not exceed 1000</span>
+        </div>
+      </div>
+
+      <!-- Seats Field -->
+      <div class="mb-3">
+        <label for="seats" class="form-label"><b>Seats</b></label>
+        <input type="number" formControlName="seats" id="seats" class="form-control" placeholder="Enter Seats" />
+        <div *ngIf="trainForm.get('seats')?.invalid && trainForm.get('seats')?.touched" class="error-message">
+          <span *ngIf="trainForm.get('seats')?.hasError('required')">Seats are required</span>
+          <span *ngIf="trainForm.get('seats')?.hasError('min')">Seats should be a positive number</span>
+          <span *ngIf="trainForm.get('seats')?.hasError('max')">Seats should not exceed 50</span>
+        </div>
+      </div>
+
+      <!-- Time (HH:mm) Field -->
+      <div class="mb-3">
+        <label for="time" class="form-label"><b>Time (HH:mm)</b></label>
+        <input type="text" formControlName="time" id="time" class="form-control" placeholder="Enter Time (HH:mm)" />
+        <div *ngIf="trainForm.get('time')?.invalid && trainForm.get('time')?.touched" class="error-message">
+          <span *ngIf="trainForm.get('time')?.hasError('required')">Time is required</span>
+          <span *ngIf="trainForm.get('time')?.hasError('invalidTimeFormat')">Invalid time format (HH:mm)</span>
+        </div>
+      </div>
+
+      <!-- <button type="submit" class="btn btn-success">{{ isEditMode ? 'Update' : 'Submit' }}</button> -->
+      <button type="submit" class="btn btn-success">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-danger" (click)="reload()">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-secondary" routerLink="/trainList">Go Back</button>
+    </form>
+  </div>
+</div>

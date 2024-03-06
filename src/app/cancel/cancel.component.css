@@ -1,0 +1,37 @@
+.bg {
+    /* margin: 0; */
+    padding: 0px;
+    background-image: url('/assets/transaction.webp');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    /* background-image: no-repeat; */
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 100px;
+  }
+  
+  .header {
+    text-align: center;
+    padding: 60px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Remove justify-content and adjust margin-top for the login button */
+  }
+  
+  .header h1 {
+    margin: 0;
+  }
+  
+  .header p {
+    margin: 0; /* Adjust margin to make paragraph closer to the margin */
+    margin-top: 20px; /* Add a little space between heading and paragraph */
+  }
+  
+  

@@ -1,0 +1,17 @@
+.container1{
+    /* background-color: black; */
+    color: white;
+}
+body{
+    background-color: grey;
+    /* background-image: url("/assets/paymentwebp.webp"); */
+    /* background-size: cover;
+    background-repeat: no-repeat; */
+    /* background-color: aqua; */
+}
+
+.table th,
+.table td {
+  /* background-color:#231e1db6; */
+  color:rgb(235, 240, 232);
+}

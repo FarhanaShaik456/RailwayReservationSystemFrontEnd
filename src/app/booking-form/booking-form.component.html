@@ -1,0 +1,62 @@
+<div class="bg">
+  <div class="bookingForm">
+    <form [formGroup]="bookingForm" (ngSubmit)="submitForm()">
+      <h1>Booking A Ticket</h1>
+      <div class="mb-3">
+        <label for="trainNo" class="form-label"><b>Train Number</b></label>
+        <input type="text" formControlName="trainNo" id="trainNo" class="form-control"
+          readonly />
+       </div>
+
+       <div class="mb-3">
+        <label for="Fare" class="form-label"><b>Fare</b></label>
+        <input type="text" formControlName="Fare" id="Fare" class="form-control"
+          readonly />
+       </div>
+       
+      <!-- Phone Number Field -->
+      <div class="mb-3">
+        <label for="phnnumber" class="form-label"><b>Phone Number</b></label>
+        <input type="text" formControlName="phnnumber" id="phnnumber" class="form-control"
+          placeholder="Enter Phone Number" />
+        <div *ngIf="bookingForm.get('phnnumber')?.invalid && bookingForm.get('phnnumber')?.touched"
+          class="error-message">
+          <div *ngIf="bookingForm.get('phnnumber')?.hasError('required')">Phone number is required</div>
+          <div *ngIf="bookingForm.get('phnnumber')?.hasError('pattern')">Phone number must be a 10-digit number</div>
+        </div>
+      </div>
+
+      <!-- Email Field -->
+      <div class="mb-3">
+        <label for="email" class="form-label"><b>Email</b></label>
+        <input type="email" formControlName="email" id="email" class="form-control" placeholder="Enter Email" />
+        <div *ngIf="bookingForm.get('email')?.invalid && bookingForm.get('email')?.touched" class="error-message">
+          <div *ngIf="bookingForm.get('email')?.hasError('required')">Email is required</div>
+          <div *ngIf="bookingForm.get('email')?.hasError('email')">Invalid email format</div>
+        </div>
+      </div>
+
+      <!-- Number of Tickets Field -->
+      <div class="mb-3">
+        <label for="numberOfTickets" class="form-label"><b>Number of Tickets</b></label>
+        <input type="number" formControlName="numberOfTickets" id="numberOfTickets" class="form-control"
+          placeholder="Enter Number of Tickets" />
+        <div *ngIf="bookingForm.get('numberOfTickets')?.invalid && bookingForm.get('numberOfTickets')?.touched"
+          class="error-message">
+          <div *ngIf="bookingForm.get('numberOfTickets')?.hasError('required')">Number of tickets is required</div>
+          <div *ngIf="bookingForm.get('numberOfTickets')?.hasError('min')">Number of tickets must be at least 1</div>
+          <div *ngIf="bookingForm.get('numberOfTickets')?.hasError('max')">You can't book more than 6 tickets at a time
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-success">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-danger cancel" (click)="goBack()">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-secondary" routerLink="/userLogin">GoBack</button>
+        
+      </div>
+    </form>
+  </div>
+</div>
+

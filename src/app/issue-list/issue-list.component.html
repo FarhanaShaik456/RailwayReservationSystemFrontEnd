@@ -1,0 +1,113 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><b>Issue Details</b></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Use interpolation to display the booking details -->
+        <div class="details">
+          <p><b>User Name: {{ data?.loginModel?.username }}</b></p>
+          <p><b>Age: {{ data?.loginModel?.age }}</b></p>
+          <p><b>County: {{ data?.loginModel?.country }}</b></p>
+          <p><b>Gender: {{ data?.loginModel?.gender }}</b></p>
+          <p><b><span class="email-color">email: {{ data?.loginModel?.email }}</span></b></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- **************************************************************************************** -->
+
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><b>Issue Deatils</b></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+       
+
+        <form [formGroup]="formValue">
+          
+          <!-- Status Field (Auto-populated) -->
+          <div class="mb-3">
+            <label for="status" class="form-label"><b>Status</b></label>
+            <select formControlName="status" id="status" class="form-control">
+              <option value="Processing">Processing</option>
+              <option value="Resolved">Resolved</option>
+            </select>
+          </div>
+          
+        
+          <!-- Solution Field (Auto-populated) -->
+          <div class="mb-3">
+            <label for="solution" class="form-label"><b>Solution</b></label>
+            <textarea type="textbox" formControlName="solution" rows="4" id="solution" class="form-control"
+              placeholder="Enter Solution"></textarea>
+          </div>
+        
+          <!-- Save button -->
+          <button type="button" class="btn btn-primary" (click)="updateIssue()">Update</button>
+        </form>
+        
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- .................................................................................. -->
+
+<app-navbar-admin></app-navbar-admin>
+
+
+<div class="button">
+  <button mat-raised-button color="primary" *ngIf="isRole === 'Admin'" routerLink="/adminLogin">
+    <mat-icon>keyboard_return</mat-icon> GoBack
+  </button>
+  <button mat-raised-button color="primary" *ngIf="isRole === 'User'" routerLink="/userLogin">
+    <mat-icon>keyboard_return</mat-icon> GoBack
+  </button>
+  </div>  
+
+<div class="row">
+  <div *ngFor="let issue of dataSource" class="col-md-4 card">
+    <div class="heading">
+      <b>Username: {{ issue.username }}</b>
+      <button mat-icon-button (click)="details(issue.username)" type="button" class="btn btn-primary"
+        data-bs-toggle="modal" data-bs-target="#exampleModal"><mat-icon
+          class="custom-icon details-icon">touch_app</mat-icon></button>
+    </div>
+    <div class="card-body" align="center">
+      <p class="card-text">Issue: {{ issue.issue }}</p>
+      <p class="card-text">Status: {{ issue.status }}
+            <button *ngIf="isRole === 'Admin'" mat-icon-button (click)="EditForm(issue.issue)" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+              <mat-icon class="custom-icon primary-icon">edit</mat-icon>
+            </button>
+            
+      </p>
+      <p class="solution"><b>Solution: {{ issue.solution }}</b></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="bg">
+ >
+    <form [formGroup]="issueForm" (ngSubmit)="submitForm()">
+      <div class="c">
+        <h1><b>Issue Form</b></h1>
+      <!-- Issue Field -->
+      <div class="mb-3">
+        <label for="issue" class="form-label"><b>Issue</b></label>
+        <textarea type="textbox" formControlName="issue" rows="4" id="issue" class="form-control"
+          placeholder="Enter Issue (min 8, max 250 characters)"></textarea>
+        <div *ngIf="issueForm.get('issue')?.invalid && issueForm.get('issue')?.touched" class="error-message">
+          <div *ngIf="issueForm.get('issue')?.hasError('required')">Issue is required</div>
+          <div *ngIf="issueForm.get('issue')?.hasError('minlength')">Issue should be at least 8 characters</div>
+          <div *ngIf="issueForm.get('issue')?.hasError('maxlength')">Issue should not exceed 250 characters</div>
+        </div>
+      </div>
+
+      <!-- Status Field (Auto-populated) -->
+      <div class="mb-3">
+        <label for="status" class="form-label"><b>Status</b></label>
+        <input type="text" formControlName="status" id="status" class="form-control" readonly />
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-success">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-danger cancel" (click)="goBack()">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-secondary" routerLink="/userLogin">GoBack</button>
+      </div>
+      </div>
+      <marquee behavior="scroll" direction="right" ><img src="assets/festive-steam-engine-train-cute-icon-vector-40102119.jpg" style="width: 120px;height: 120px;"></marquee>
+    </form>
+  </div>

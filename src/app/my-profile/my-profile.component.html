@@ -1,0 +1,65 @@
+<div class="bg">
+ 
+    <div>
+      <h1>Update Profile Here!!</h1>
+    </div>
+    
+    <div class="profile">
+      <img src="assets/profile1.png" alt="Profile Picture" width="250" height="250">
+      <h1>{{username}}</h1> <!-- Display username below the profile picture -->
+  </div>
+    <div class="profileupdate">
+        <form [formGroup]="updateForm" (ngSubmit)="submitForm()">
+  
+          <!-- Email Field -->
+          <div class="mb-3">
+            <label for="email" class="form-label"><b>Email</b></label>
+            <input type="email" formControlName="email" id="email" class="form-control" placeholder="Enter Email" />
+            <div *ngIf="updateForm.get('email')?.invalid && updateForm.get('email')?.touched" class="error-message">
+              <div *ngIf="updateForm.get('email')?.hasError('required')">Email is required</div>
+              <div *ngIf="updateForm.get('email')?.hasError('email')">Enter a valid email address</div>
+            </div>
+          </div>
+  
+  
+          <!-- Gender Field -->
+          <div class="mb-3">
+            <label for="gender" class="form-label"><b>Gender</b></label>
+            <select formControlName="gender" id="gender" class="form-select">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <div *ngIf="updateForm.get('gender')?.invalid && updateForm.get('gender')?.touched" class="error-message">
+              <div *ngIf="updateForm.get('gender')?.hasError('required')">Gender is required</div>
+            </div>
+          </div>
+  
+  
+          <!-- Age Field -->
+          <div class="mb-3">
+            <label for="age" class="form-label"><b>Age</b></label>
+            <input type="number" formControlName="age" id="age" class="form-control" placeholder="Enter Age" />
+            <div *ngIf="updateForm.get('age')?.invalid && updateForm.get('age')?.touched" class="error-message">
+              <div *ngIf="updateForm.get('age')?.hasError('required')">Age is required</div>
+              <div *ngIf="updateForm.get('age')?.hasError('min')">Age cannot be negative</div>
+              <div *ngIf="updateForm.get('age')?.hasError('max')">Age cannot exceed 100</div>
+            </div>
+          </div>
+  
+          <!-- Country Field -->
+          <div class="mb-3">
+            <label for="country" class="form-label"><b>Country</b></label>
+            <input type="text" formControlName="country" id="country" class="form-control" placeholder="Enter Country" />
+            <div *ngIf="updateForm.get('country')?.invalid && updateForm.get('country')?.touched" class="error-message">
+              <div *ngIf="updateForm.get('country')?.hasError('required')">Country is required</div>
+            </div>
+          </div>
+  
+          <div>
+            <button type="submit" class="btn btn-success">Save Changes</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-primary" (click)="goBack()">Go Back</button>
+          </div>
+          <marquee behavior="scroll" direction="right" ><img src="assets/festive-steam-engine-train-cute-icon-vector-40102119.jpg" style="width: 120px;height: 120px;"></marquee>
+        </form>
+
+    </div>

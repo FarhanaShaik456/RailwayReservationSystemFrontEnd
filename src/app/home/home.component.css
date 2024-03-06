@@ -1,0 +1,54 @@
+.heading{
+    margin-top: 2%;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 200%;
+    color: green;
+    text-align: center;
+    
+}
+.subheading{
+    margin-left: 20%;
+    font-style: italic;
+    font-size: 200%;
+    color: green;
+    font-weight: 500;
+    text-shadow: 2px 2px 5px rgb(190, 221, 95);
+}
+.card{
+    color: green;
+    font-weight: 500;
+    background-image: url("/assets/bg2.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.feature{
+    color: darkolivegreen;
+    font-weight: 800;
+}
+.sub-head{
+    font-style: italic; 
+    color: green;
+    text-shadow: 2px 2px 5px darkolivegreen;
+}
+.f1{
+    font-style: italic;
+    font-size: medium;
+    font-weight: 400;
+    color: brown;
+    text-shadow: 2px 2px 5px darkolivegreen;
+
+}
+.info{
+    font-style: italic; 
+    color: rgb(56, 34, 167);
+    font-weight: 500;
+}
+.c1{
+    color: brown;
+    font-weight: 500;
+}
+.bg{
+    background-image: url("/assets/bg2.webp");
+    background-size: cover;
+}

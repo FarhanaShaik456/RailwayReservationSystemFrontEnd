@@ -1,0 +1,95 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <!-- Add a button for downloading PDF -->
+      <button type="button" (click)="downloadPDF()" class="btn btn-primary">Download PDF</button>
+
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><b>Booking Details</b></h1>
+        <!-- <mat-icon (click)="downloadPDF()">cloud_download</mat-icon> -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Use interpolation to display the booking details -->
+        <div class="details">
+          <p><b>PNR : {{ data?.bookingModel?.pnr}}</b></p>
+          <p><b>User Name: {{ data?.bookingModel?.username }}</b></p>
+          <p><b>Train No: {{ data?.trainModel?.trainNo }}</b></p>
+          <p><b>Train: {{ data?.trainModel?.trainName }}</b></p>
+          <p><b>Time: {{ data?.trainModel?.time }}</b></p>
+          <p><b>Train From: {{ data?.trainModel?.trainFrom }}</b></p>
+          <p><b>Train To: {{ data?.trainModel?.trainTo }}</b></p>
+          <p><b>No Of Tickets: {{ data?.bookingModel?.numberOfTickets }}</b></p>
+          <p><b>Total Cost: {{ data?.bookingModel?.cost }}</b></p>
+          <p><b>Phone Number: {{ data?.bookingModel?.phnnumber }}</b></p>
+          <p><b><span class="email-color">email: {{ data?.bookingModel?.email }}</span></b></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+<!-- ******************************************************************************************************************** -->
+
+
+
+
+<app-navbar-admin></app-navbar-admin>
+
+<div class="bg">
+  <div class="button">
+    <button mat-raised-button color="primary" *ngIf="isRole === 'Admin'" routerLink="/adminLogin">
+      <mat-icon>keyboard_return</mat-icon> GoBack
+    </button>
+    <button mat-raised-button color="primary" *ngIf="isRole === 'User'" routerLink="/userLogin">
+      <mat-icon>keyboard_return</mat-icon> GoBack
+    </button>
+  </div>
+
+  <div class="container1">
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th>PNR</th>
+          <th>User Name</th>
+          <th>Train No</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th>No of Tickets</th>
+          <th>Cost</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of dataSource">
+          <td>{{ row.pnr }}</td>
+          <td>{{ row.username }}</td>
+          <td>{{ row.trainNo }}</td>
+          <td>{{ row.phnnumber }}</td>
+          <td>{{ row.email }}</td>
+          <td>{{ row.numberOfTickets }}</td>
+          <td>{{ row.cost }}</td>
+          <td>
+            <button mat-icon-button *ngIf="isRole==='User'" (click)="cancelTicket(row.pnr)"
+              class="btn btn-secondary"><mat-icon class="custom-icon warn-icon">delete</mat-icon></button>
+            <button mat-icon-button (click)="details(row.pnr)" class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#exampleModal"><mat-icon class="custom-icon details-icon">touch_app</mat-icon></button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot *ngIf="dataSource.length === 0">
+        <tr>
+          <td class="text-center" colspan="9">No data matching the filter</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="bg1">
+  <br>
+  <div class="bg"> </div>
+  <div class="container">
+    <h2 class="heading">Do Payment</h2>
+    <div class="col-md-5 mb-2">
+
+      <button mat-raised-button color="warn" (click)="payNow()">
+        <mat-icon>payment</mat-icon> Pay {{ cost | currency: 'INR' }}
+      </button>
+      
+    </div>
+
+  </div>
+</div>

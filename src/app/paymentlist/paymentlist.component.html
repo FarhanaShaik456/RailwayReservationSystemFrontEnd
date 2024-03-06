@@ -1,0 +1,39 @@
+
+<app-navbar-admin></app-navbar-admin>
+
+<body>
+    <div class="backg">
+        <button mat-raised-button color="primary" (click)="goBack()">
+            <mat-icon>keyboard_return</mat-icon> GoBack
+        </button>
+        <br>
+        <br>
+
+        <div class="container1">
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th>TransactionId</th>
+                        <th>BookingId</th>
+                        <th>Username</th>
+                        <th>Amount</th>
+                        <th>TransactionStatus</th>
+
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of dataSource">
+                        <td>{{ row.transactionId }}</td>
+                        <td>{{ row.bookingId }}</td>
+                        <td>{{ row.username }}</td>
+                        <td>{{ row.amount }}</td>
+                        <td>{{ row.transactionStatus }}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</body>

@@ -1,0 +1,14 @@
+.email{
+    color:rgb(43, 43, 226)
+}
+.country{
+    color:darkolivegreen;
+    font-weight: 600;
+}
+.heading{
+    text-align: center;
+    color: darkblue;
+    background-color: rgb(167, 233, 233);
+    padding-bottom: 2%;
+    height: 120%;
+}

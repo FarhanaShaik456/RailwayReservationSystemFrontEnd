@@ -1,0 +1,72 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="bg">
+  <div class="container">
+    <form [formGroup]="search" (ngSubmit)="searchTrains()">
+      <div class="row">
+        <!-- Train From Field -->
+        <div class="col-md-4 mb-3">
+          <label for="trainFrom" class="form-label"><b>Train From</b></label>
+          <input type="text" formControlName="trainFrom" id="trainFrom" class="form-control"
+            placeholder="Enter Train From" />
+          <div *ngIf="search.get('trainFrom')?.invalid && search.get('trainFrom')?.touched" class="error-message">
+            <span *ngIf="search.get('trainFrom')?.hasError('required')">Train From is required</span>
+            <span *ngIf="search.get('trainFrom')?.hasError('minlength')">Train From should be at least 3
+              characters</span>
+            <span *ngIf="search.get('trainFrom')?.hasError('maxlength')">Train From should not exceed 30
+              characters</span>
+          </div>
+        </div>
+        <!-- Train To Field -->
+        <div class="col-md-4 mb-3">
+          <label for="trainTo" class="form-label"><b>Train To</b></label>
+          <input type="text" formControlName="trainTo" id="trainTo" class="form-control" placeholder="Enter Train To" />
+          <div *ngIf="search.get('trainTo')?.invalid && search.get('trainTo')?.touched" class="error-message">
+            <span *ngIf="search.get('trainTo')?.hasError('required')">Train To is required</span>
+            <span *ngIf="search.get('trainTo')?.hasError('minlength')">Train To should be at least 3 characters</span>
+            <span *ngIf="search.get('trainTo')?.hasError('maxlength')">Train To should not exceed 30 characters</span>
+          </div>
+        </div>
+        <div class="col-md-2 mb-3">
+          <button mat-raised-button color="primary" type="submit">
+            <mat-icon>search</mat-icon> Search Trains
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="container1">
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th>Train No</th>
+          <th>Train Name</th>
+          <th>Train From</th>
+          <th>Train To</th>
+          <th>Fare</th>
+          <th>Seats</th>
+          <th>Time</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of datasource">
+          <td>{{ row.trainNo }}</td>
+          <td>{{ row.trainName }}</td>
+          <td>{{ row.trainFrom }}</td>
+          <td>{{ row.trainTo }}</td>
+          <td>{{ row.fare }}</td>
+          <td>{{ row.seats }}</td>
+          <td>{{ row.time }}</td>
+         <td>  <button *ngIf="isRole !== 'Admin'" class="btn btn-success"
+          (click)="redirectToBookingOrLogin(row)">Book Now</button>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="datasource.length === 0">
+    <p class="fs-5">No trains found for the given search criteria.</p>
+  </div>
+</div>

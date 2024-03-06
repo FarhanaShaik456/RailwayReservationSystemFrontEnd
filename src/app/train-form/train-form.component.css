@@ -1,0 +1,22 @@
+.addtrain{
+  margin-left: 55%;   
+  margin-right: 5%;  
+  color: black;
+  width: 35%;
+  margin-top: 2%;
+  /* margin-top: 5%; */
+}
+
+.error-message {
+  color: red;
+  font-style: italic;
+  }
+h1{
+  float: left;
+}
+  
+.train{
+  background-image: url('/assets/bg3.jpeg');
+  background-size: 50% ;  
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,14 @@
+.bg{
+    background-image: url("/assets/payment bg.jpg");
+    height: 50%;
+    background-repeat: no-repeat;
+    margin-left: 40%;
+    margin-top: 5%;
+}
+.heading{
+    color: darkblue;
+    font-weight: 900;
+}
+.bg1{
+    height: 100vh;
+}

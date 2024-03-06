@@ -1,0 +1,16 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="bg">
+  <div class="adminlog" align="center">
+    <div class="adminmenucard">
+      <div *ngFor="let option of AdminOptions" (click)="navigateTo(option.route)">
+        <div class="card">
+          <img [src]="option.url" alt="Card Image" />
+          <div class="card-body">
+            <h5 class="card-title">{{ option.title }}</h5>
+            <p class="card-text">{{ option.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
